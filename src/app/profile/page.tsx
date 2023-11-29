@@ -3,8 +3,10 @@ import React from 'react'
 
 function Profile() {
   return (
-    <div>Profile Page</div>
+    <div className='w-full min-h-screen'>
+        Profile Page
+    </div>
   )
 }
 
-export default Profile
+export default Profile;

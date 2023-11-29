@@ -2,7 +2,7 @@ import React from 'react'
 
 function ProfileParams({params}:any) {
   return (
-    <div>
+    <div className='w-full min-h-screen'>
         <h1>
             ProfileParams
         </h1>
@@ -14,4 +14,4 @@ function ProfileParams({params}:any) {
   )
 }
 
-export default ProfileParams
+export default ProfileParams;
