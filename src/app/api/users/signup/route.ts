@@ -30,7 +30,7 @@ export async function POST(req:NextRequest){
             return NextResponse.json({
                 message:"Provide valid data"
             },{
-                status:401
+                status:400
             });
         }
 
