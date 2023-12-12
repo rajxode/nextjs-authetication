@@ -16,13 +16,14 @@ export default function LoginPage() {
     email: "",
     password: "",
   });
+  const [isLoading,setIsLoading] = React.useState(false);
 
   // handle form submit
   const handleSubmit = async () => {
     try {
       // make api call
+      setIsLoading(true);
       const response = await axios.post('/api/users/login',formData);
-      console.log(response.data);
       // toast notification
       toast.success('User logged in');
       // redirect to profile page
@@ -30,6 +31,8 @@ export default function LoginPage() {
     } catch (err : any) {
       // show error message
       toast.error(`Error: ${err.response.data.message}`)
+    } finally{
+      setIsLoading(false);
     }
   };
 
@@ -69,9 +72,17 @@ export default function LoginPage() {
         </div>
         <div className="flex flex-col h-[15%]">
           {/* submit button */}
-          <button className="rounded bg-blue-500 text-white h-full font-semibold"
+          <button className={`rounded text-white h-full font-semibold ${ isLoading ? 'bg-blue-300' : 'bg-blue-500'}`}
             onClick={handleSubmit}
           >
+            {
+              isLoading
+              ?
+              <i className="fa-solid fa-circle-notch fa-spin"></i>
+              :
+              null
+            }
+            &nbsp;
             Sign In
           </button>
         </div>

@@ -18,10 +18,13 @@ function SignUp() {
     password:'',
   });
 
+  const [isLoading,setIsLoading] = React.useState(false);
+
   // handle the form submit
   const handleSubmit = async() => {
     try {
       // make the api call for signup
+      setIsLoading(true);
       const response = await axios.post('/api/users/signup',formData);
       // success message
       toast.success('New User created !!!');
@@ -31,6 +34,8 @@ function SignUp() {
       console.log(err);
       // show error message
       toast.error(`Error: ${err.response.data.message}`);
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -79,10 +84,18 @@ function SignUp() {
         </div>
         <div className='flex flex-col h-[12%]'>
           {/* handle the form submission */}
-          <button className='rounded bg-blue-500 text-white h-full font-semibold'
+          <button className={`rounded text-white h-full font-semibold ${ isLoading ? 'bg-blue-300' : 'bg-blue-500'}`}
             onClick={handleSubmit}
           >
-            Submit
+            {
+              isLoading
+              ?
+              <i className="fa-solid fa-circle-notch fa-spin"></i>
+              :
+              null
+            }
+            &nbsp;
+            Sign Up
           </button>
         </div>
         {/* link for login page */}
