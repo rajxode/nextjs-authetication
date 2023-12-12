@@ -7,6 +7,7 @@ import User from "@/models/User";
 import { NextRequest,NextResponse } from "next/server";
 // for encrypting password
 import bcryptjs from 'bcryptjs';
+import { sendMail } from "@/helpers/mailHelper";
 
 
 // connect to database
@@ -61,13 +62,16 @@ export async function POST(req:NextRequest){
         });
 
         // save the user
-        await newUser.save();
+        const savedUser = await newUser.save();
+
+        // Send verification email
+        await sendMail({email,emailType:'VERIFY',userId:savedUser._id});
 
         // return the resposne to the user
         return NextResponse.json({
             message:'User Created',
             success:true,
-            user:newUser
+            user:savedUser
         },
         {
             status:201
