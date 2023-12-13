@@ -100,7 +100,7 @@ function SignUp() {
         </div>
         {/* link for login page */}
         <div className='w-full h-auto flex justify-center'>
-          <Link href='/login'>Login Instead</Link>
+          <Link href='/login' className="underline text-purple-600">Login Instead</Link>
         </div>
       </div>
     </div>

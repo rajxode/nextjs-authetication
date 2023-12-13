@@ -10,7 +10,7 @@ export function middleware(request: NextRequest) {
     const path = request.nextUrl.pathname;
 
     // check whether path is public or not
-    const isPublicPath = path === '/login' || path === '/signup' || path === '/verifyemail';
+    const isPublicPath = path === '/login' || path === '/signup' || path === '/verifyemail' || path === '/forgetpassword' || path === '/resetpassword';
 
     // get the token from cookies
     const token = request.cookies.get('token')?.value || '';
@@ -36,6 +36,7 @@ export const config = {
         '/login',
         '/profile/:path*',
         '/signup',
-        '/verifyemail'
+        '/verifyemail',
+        '/forgetpassword'
     ],
 }

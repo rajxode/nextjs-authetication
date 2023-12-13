@@ -21,8 +21,6 @@ export async function POST(req:NextRequest){
         // get user's data from request
         const reqBody = await req.json();
 
-        console.log(reqBody);
-
         // extract data from reqBody
         const { username, email, password } = reqBody;
 

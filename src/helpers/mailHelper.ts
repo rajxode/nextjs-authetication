@@ -50,10 +50,19 @@ export const sendMail = async({email,emailType,userId} : any) => {
             // subject
             subject: emailType === 'VERIFY' ? 'verify your email' : 'reset password',
             // mail body
-            html:`<p>
+            html:
+            emailType === 'VERIFY'
+            ?
+            `<p>
                 Copy paste the following link to verify your token
                 <br />
                 ${process.env.DOMAIN}verifyemail?=${hashedToken}
+            </p>`
+            :
+            `<p>
+                Copy paste the following link to reset your password
+                <br />
+                ${process.env.DOMAIN}resetpassword?=${hashedToken}
             </p>`
         }
 

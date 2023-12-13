@@ -86,9 +86,10 @@ export default function LoginPage() {
             Sign In
           </button>
         </div>
-        <div className="w-full h-auto flex justify-center">
+        <div className="w-full h-auto flex justify-center flex-col items-center">
+          <Link href='/forgetpassword' className="underline text-purple-600">Forget Password</Link>
           {/* link for signup Page */}
-          <Link href="/signup">SignUp Instead</Link>
+          <Link href="/signup" className="underline text-purple-600">SignUp Instead</Link>
         </div>
       </div>
     </div>
