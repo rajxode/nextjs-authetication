@@ -1,4 +1,4 @@
-
+// client side
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
@@ -7,7 +7,6 @@ import Link from "next/link";
 import toast from "react-hot-toast";
 
 export default function LoginPage() {
-
   // for navigation
   const router = useRouter();
 
@@ -16,30 +15,33 @@ export default function LoginPage() {
     email: "",
     password: "",
   });
-  const [isLoading,setIsLoading] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   // handle form submit
   const handleSubmit = async () => {
     try {
       // make api call
       setIsLoading(true);
-      const response = await axios.post('/api/users/login',formData);
+      const response = await axios.post("/api/users/login", formData);
       // toast notification
-      toast.success('User logged in');
+      toast.success("User logged in");
       // redirect to profile page
-      router.push('/profile');
-    } catch (err : any) {
+      router.push("/profile");
+    } catch (err: any) {
       // show error message
-      toast.error(`Error: ${err.response.data.message}`)
-    } finally{
+      toast.error(`Error: ${err.response.data.message}`);
+    } finally {
       setIsLoading(false);
     }
   };
 
-
+  // render page
   return (
     <div className="flex h-screen justify-center items-center md:p-3">
-      <div className="flex flex-col justify-between w-2/5 h-2/5 rounded-md shadow p-2 bg-slate-100">
+      <div
+        className="flex flex-col justify-between w-full md:w-3/5 lg:w-2/5 h-2/5 
+        rounded-md shadow p-2 mx-[2%] md:mx-0 bg-slate-100"
+      >
         {/* heading */}
         <div className="text-center h-auto text-3xl font-semibold">Login</div>
         <div className="flex flex-col h-1/4">
@@ -50,7 +52,7 @@ export default function LoginPage() {
             placeholder="Email..."
             value={formData.email}
             className="h-3/5 rounded px-2 focus:outline-none bg-gray-200"
-            // set email 
+            // set email
             onChange={(e) =>
               setFormData({ ...formData, email: e.target.value })
             }
@@ -72,24 +74,26 @@ export default function LoginPage() {
         </div>
         <div className="flex flex-col h-[15%]">
           {/* submit button */}
-          <button className={`rounded text-white h-full font-semibold ${ isLoading ? 'bg-blue-300' : 'bg-blue-500'}`}
+          <button
+            className={`rounded text-white h-full font-semibold ${
+              isLoading ? "bg-blue-300" : "bg-blue-500"
+            }`}
             onClick={handleSubmit}
           >
-            {
-              isLoading
-              ?
+            {isLoading ? (
               <i className="fa-solid fa-circle-notch fa-spin"></i>
-              :
-              null
-            }
-            &nbsp;
-            Sign In
+            ) : null}
+            &nbsp; Sign In
           </button>
         </div>
         <div className="w-full h-auto flex justify-center flex-col items-center">
-          <Link href='/forgetpassword' className="underline text-purple-600">Forget Password</Link>
+          <Link href="/forgetpassword" className="underline text-purple-600">
+            Forget Password
+          </Link>
           {/* link for signup Page */}
-          <Link href="/signup" className="underline text-purple-600">SignUp Instead</Link>
+          <Link href="/signup" className="underline text-purple-600">
+            SignUp Instead
+          </Link>
         </div>
       </div>
     </div>
