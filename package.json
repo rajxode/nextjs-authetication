@@ -12,6 +12,7 @@
     "axios": "^1.5.1",
     "bcryptjs": "^2.4.3",
     "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.3.0",
     "mongoose": "^7.6.3",
     "next": "13.5.6",
     "nodemailer": "^6.9.6",
