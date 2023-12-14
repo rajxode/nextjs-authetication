@@ -33,7 +33,7 @@ export default function VerifyEmail(){
     useEffect(() => {
         const url = window.location.search.split('=')[1];
         setToken(url || '');
-    });
+    },[]);
 
 
     // if token is stored then verify the token
