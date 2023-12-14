@@ -18,10 +18,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-      <script
-        src="https://kit.fontawesome.com/9c250245e3.js"
-        crossOrigin="anonymous"
-        ></script>
       </head>
       <body className={inter.className}>
         <Toaster
